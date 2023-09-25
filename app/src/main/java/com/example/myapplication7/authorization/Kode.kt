@@ -1,15 +1,12 @@
 package com.example.myapplication7.authorization
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
-import com.example.myapplication7.Costants
+import com.example.myapplication7.Constants
 import com.example.myapplication7.MainActivity
 import com.example.myapplication7.R
 import com.example.myapplication7.registration.Registration
@@ -20,7 +17,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import com.example.myapplication7.Constants.Companion.BASE_URL
+
 
 class Kode : AppCompatActivity() {
 
@@ -46,7 +43,7 @@ class Kode : AppCompatActivity() {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL).client(client)
+            .baseUrl(Constants.BASE_URL).client(client)
             .addConverterFactory(GsonConverterFactory.create()).build()
         val mainApi = retrofit.create(MainApi::class.java)
 

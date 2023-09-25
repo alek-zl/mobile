@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import com.example.myapplication7.Constants
 import com.example.myapplication7.MainActivity
 import com.example.myapplication7.R
 import kotlinx.coroutines.CoroutineScope
@@ -22,7 +23,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import com.example.myapplication7.Constants.Companion.BASE_URL
+
 class Registration : AppCompatActivity() {
     private lateinit var slist: ArrayList<String>
     @SuppressLint("MissingInflatedId")
@@ -74,7 +75,7 @@ class Registration : AppCompatActivity() {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL).client(client)
+            .baseUrl(Constants.BASE_URL).client(client)
             .addConverterFactory(GsonConverterFactory.create()).build()
         val mainApi = retrofit.create(RegApi::class.java)
 

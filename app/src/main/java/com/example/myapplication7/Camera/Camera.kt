@@ -24,9 +24,9 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import com.example.myapplication7.Constants.Companion.BASE_URL
 
-import com.example.myapplication7.Costants
+
+import com.example.myapplication7.Constants
 import com.example.myapplication7.R
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -59,8 +59,8 @@ class Camera : AppCompatActivity() {
         }
         else{
             ActivityCompat.requestPermissions(this,
-                Costants.REQUEST_PERMISSIONS,
-                Costants.REQUEST_CODE_PERMISSIONS
+                Constants.REQUEST_PERMISSIONS,
+                Constants.REQUEST_CODE_PERMISSIONS
             )
         }
 
@@ -88,7 +88,7 @@ class Camera : AppCompatActivity() {
         val imageCapture = imageCapture ?: return
         val photoFile = File(
             outputDirectory,
-            SimpleDateFormat(Costants.FILE_NAME_FORMAT, Locale.getDefault())
+            SimpleDateFormat(Constants.FILE_NAME_FORMAT, Locale.getDefault())
                 .format(System
                     .currentTimeMillis())+".jpg")
         val outputOption = ImageCapture
@@ -112,7 +112,7 @@ class Camera : AppCompatActivity() {
                 }
 
                 override fun onError(exception: ImageCaptureException){
-                    Log.e(Costants.TAG, "onError: ${exception.message}", exception)
+                    Log.e(Constants.TAG, "onError: ${exception.message}", exception)
                 }
 
             }
@@ -135,7 +135,7 @@ class Camera : AppCompatActivity() {
         httpClient.addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
 
         val retrofit =
-            Retrofit.Builder().baseUrl(BASE_URL)
+            Retrofit.Builder().baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build()
@@ -171,7 +171,7 @@ class Camera : AppCompatActivity() {
                 cameraProvider.unbindAll()
                 cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture)
             }catch (e:Exception){
-                Log.d(Costants.TAG, "startCamera Fail", e)
+                Log.d(Constants.TAG, "startCamera Fail", e)
             }
         }, ContextCompat.getMainExecutor(this))
 
@@ -185,7 +185,7 @@ class Camera : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if(requestCode == Costants.REQUEST_CODE_PERMISSIONS){
+        if(requestCode == Constants.REQUEST_CODE_PERMISSIONS){
             if(allPermissionGranted()){
                 startCamera()
             }else{
@@ -196,7 +196,7 @@ class Camera : AppCompatActivity() {
     }
 
     private fun allPermissionGranted() =
-        Costants.REQUEST_PERMISSIONS.all{
+        Constants.REQUEST_PERMISSIONS.all{
             ContextCompat.checkSelfPermission(baseContext, it)==PackageManager.PERMISSION_GRANTED
         }
 

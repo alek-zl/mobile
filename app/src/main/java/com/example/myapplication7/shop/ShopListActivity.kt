@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication7.Camera.Camera
-import com.example.myapplication7.Costants
+import com.example.myapplication7.Constants
 import com.example.myapplication7.R
 import java.math.RoundingMode
 
@@ -95,7 +95,7 @@ class ShopListActivity : AppCompatActivity() {
                     intent.putExtra("description", productArrayList[position].description)
                     intent.putExtra("counter", productArrayList[position].counter)
                     intent.putExtra("position", position)
-                    startActivityForResult(intent, Costants.REQUEST_CODE_DESCRIPTION)
+                    startActivityForResult(intent, Constants.REQUEST_CODE_DESCRIPTION)
                 }
                 if(idClick==1){
 
@@ -135,7 +135,7 @@ class ShopListActivity : AppCompatActivity() {
         val buttonAdd: Button = findViewById(R.id.buttonAdd)
         buttonAdd.setOnClickListener {
             val intent = Intent(this@ShopListActivity, Camera::class.java)
-            startActivityForResult(intent, Costants.REQUEST_CODE_CAMERA)
+            startActivityForResult(intent, Constants.REQUEST_CODE_CAMERA)
 
             /*val product = Product(title[0], price[0], imageId[0], description[0], 1)
             adapter.productAdd(product)
@@ -149,7 +149,7 @@ class ShopListActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         var check: TextView = findViewById(R.id.check)
-        if(requestCode== Costants.REQUEST_CODE_DESCRIPTION && resultCode== RESULT_OK && data!=null){
+        if(requestCode== Constants.REQUEST_CODE_DESCRIPTION && resultCode== RESULT_OK && data!=null){
             Toast.makeText(this@ShopListActivity,
                 "Изменения были приняты", Toast.LENGTH_SHORT).show()
 
@@ -175,7 +175,7 @@ class ShopListActivity : AppCompatActivity() {
             }
 
         }
-        if(requestCode== Costants.REQUEST_CODE_CAMERA && resultCode== RESULT_OK){
+        if(requestCode== Constants.REQUEST_CODE_CAMERA && resultCode== RESULT_OK){
             val product = Product(title[0], price[0], imageId[0], description[0], 1)
             adapter.productAdd(product)
             productArrayList.add(product)
