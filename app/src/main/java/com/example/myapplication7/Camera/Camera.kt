@@ -24,7 +24,7 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-
+import com.example.myapplication7.Constants.Companion.BASE_URL
 
 import com.example.myapplication7.Costants
 import com.example.myapplication7.R
@@ -135,7 +135,7 @@ class Camera : AppCompatActivity() {
         httpClient.addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
 
         val retrofit =
-            Retrofit.Builder().baseUrl("https://c465-95-174-107-7.ngrok-free.app/")
+            Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build()

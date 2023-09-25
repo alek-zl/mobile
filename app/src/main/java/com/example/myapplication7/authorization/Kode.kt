@@ -20,6 +20,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import com.example.myapplication7.Constants.Companion.BASE_URL
 
 class Kode : AppCompatActivity() {
 
@@ -45,7 +46,7 @@ class Kode : AppCompatActivity() {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://c465-95-174-107-7.ngrok-free.app/").client(client)
+            .baseUrl(BASE_URL).client(client)
             .addConverterFactory(GsonConverterFactory.create()).build()
         val mainApi = retrofit.create(MainApi::class.java)
 
