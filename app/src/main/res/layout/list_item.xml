@@ -27,7 +27,7 @@
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="@dimen/_100sdp"
-                android:layout_height="@dimen/_22sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="8dp"
                 android:layout_weight="1"

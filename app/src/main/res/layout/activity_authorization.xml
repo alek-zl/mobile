@@ -44,9 +44,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_60sdp"
+            android:backgroundTint="@android:color/darker_gray"
             android:ems="10"
             android:hint="Номер телефона"
-            android:inputType="text" />
+            android:inputType="phone"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/buttonLogin"

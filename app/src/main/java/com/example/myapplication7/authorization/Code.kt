@@ -19,7 +19,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class Kode : AppCompatActivity() {
+class Code : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +57,7 @@ class Kode : AppCompatActivity() {
                 token = userLogin.accessToken
                 isUserInBD = userLogin.isUserInBD
                 verificationCode = userLogin.verificationCode
-                Toast.makeText(this@Kode,
+                Toast.makeText(this@Code,
                     "Введите код! КОД: ${verificationCode.toString()}", Toast.LENGTH_SHORT).show()
             }
         }
@@ -75,12 +75,12 @@ class Kode : AppCompatActivity() {
             if(verificationCode.toString() == edCode.text.toString()){
                 if(isUserInBD){
 
-                    val intent1 = Intent(this@Kode, MainActivity::class.java)
+                    val intent1 = Intent(this@Code, MainActivity::class.java)
                     startActivity(intent1)
                     finish()
                 }
                 else{
-                    val intent = Intent(this@Kode, Registration::class.java)
+                    val intent = Intent(this@Code, Registration::class.java)
                     intent.putExtra("phone",  phone.toString())
                     startActivity(intent)
                     finish()
@@ -88,7 +88,7 @@ class Kode : AppCompatActivity() {
 
             }
             else{
-                Toast.makeText(this@Kode,
+                Toast.makeText(this@Code,
                     "Введите код! КОД: ${verificationCode.toString()}", Toast.LENGTH_SHORT).show()
             }
         }

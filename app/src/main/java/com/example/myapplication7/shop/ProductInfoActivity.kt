@@ -1,8 +1,11 @@
 package com.example.myapplication7.shop
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Base64
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -29,8 +32,10 @@ class ProductInfoActivity : AppCompatActivity() {
         val descriptionIntent = bundle.getString("description")
         val priceIntent = bundle.getFloat("price", 0f)
         val counterIntent = bundle.getInt("counter", 0)
-        val imageIdIntent =  bundle.getInt("imageId", 0)
+        val imageStrBase64 =  bundle.getString("image").toString()
         val position: Int = bundle.getInt("position", 0)
+
+
 
         title.text = titleIntent
         description.text = descriptionIntent
@@ -38,7 +43,7 @@ class ProductInfoActivity : AppCompatActivity() {
         priceChange = priceIntent
         counter.text = counterIntent.toString()
         counterChange = counterIntent
-        image.setImageResource(imageIdIntent)
+        image.setImageBitmap(decodePicString(imageStrBase64))
         priceDifference = priceIntent/counterIntent
 
         val tvPlus: TextView = findViewById(R.id.tvPlus)
@@ -67,6 +72,12 @@ class ProductInfoActivity : AppCompatActivity() {
             finish()
         }
 
+    }
+
+    fun decodePicString (encodedString: String): Bitmap {
+        val imageBytes = Base64.decode(encodedString, Base64.DEFAULT)
+        val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+        return decodedImage
     }
 
 }

@@ -102,7 +102,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/buttonAdd2"
+                android:id="@+id/buttonPay"
                 android:layout_width="@dimen/_120sdp"
                 android:layout_height="wrap_content"
 

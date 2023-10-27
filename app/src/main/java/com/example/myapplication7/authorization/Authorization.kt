@@ -23,7 +23,7 @@ class Authorization : AppCompatActivity() {
 
 
         b.setOnClickListener {
-            val intent = Intent(this@Authorization, Kode::class.java)
+            val intent = Intent(this@Authorization, Code::class.java)
             intent.putExtra("phone",  phone.text.toString())
             startActivityForResult(intent, Constants.REQUEST_CODE_LOGIN)
 

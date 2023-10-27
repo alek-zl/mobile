@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authorization.Kode">
+    tools:context=".authorization.Code">
 
     <Button
         android:id="@+id/buttonReturn"
@@ -56,7 +56,8 @@
             android:layout_marginHorizontal="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_60sdp"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="phone"
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/buttonContinue"
